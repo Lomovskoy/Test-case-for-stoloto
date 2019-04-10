@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Test-case-for-stoloto" />
+        <module name="testwebapp" />
       </profile>
     </annotationProcessing>
   </component>
