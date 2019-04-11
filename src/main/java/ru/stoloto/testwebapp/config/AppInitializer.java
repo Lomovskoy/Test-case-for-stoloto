@@ -1,27 +1,30 @@
 package ru.stoloto.testwebapp.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.lang.NonNull;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
 public class AppInitializer implements WebApplicationInitializer {
 
+    private Logger logger = LoggerFactory.getLogger(AppInitializer.class.getName());
+
     @Override
-    public void onStartup(ServletContext servletContext) throws ServletException {
+    public void onStartup(@NonNull ServletContext servletContext) {
 
-        System.out.println("Initializing Application for " + servletContext.getServerInfo());
+        logger.info("Initializing Application for " + servletContext.getServerInfo());
 
-        // Create ApplicationContext
+        // Создать контекст приложения
         AnnotationConfigWebApplicationContext applicationContext = new AnnotationConfigWebApplicationContext();
-
         applicationContext.register(AppConfig.class);
         applicationContext.setServletContext(servletContext);
 
-        // Add the servlet mapping manually and make it initialize automatically
+        // Добавялет отображение сервлета вручную и делает его инициализацию автоматически
         DispatcherServlet dispatcherServlet = new DispatcherServlet(applicationContext);
         ServletRegistration.Dynamic servlet = servletContext.addServlet("mvc-dispatcher", dispatcherServlet);
 
