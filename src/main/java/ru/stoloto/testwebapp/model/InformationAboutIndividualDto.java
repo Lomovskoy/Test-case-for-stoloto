@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Objects;
 
 @ApiModel("Модель данных пользователя для получения ИНН")
@@ -28,36 +29,21 @@ public class InformationAboutIndividualDto {
     private String otch;
 
     @ApiModelProperty("Дата рождения")
-    private LocalDate bdate;
+    private String bdate;
 
     @ApiModelProperty("Место рождения")
     private String bplace;
 
-    @ApiModelProperty("Тип документа код")
+    @ApiModelProperty("Тип документа")
     private int doctype;
 
     @ApiModelProperty("Серия и номер документа")
     private String docno;
 
     @ApiModelProperty("Дата выдачи документа")
-    private LocalDate docdt;
+    private String docdt;
 
     public InformationAboutIndividualDto() {
-    }
-
-    public InformationAboutIndividualDto(String c, String captcha, String captchaToken, String fam, String nam, String otch,
-                                         LocalDate bdate, String bplace, int doctype, String docno, LocalDate docdt) {
-        this.c = c;
-        this.captcha = captcha;
-        this.captchaToken = captchaToken;
-        this.fam = fam;
-        this.nam = nam;
-        this.otch = otch;
-        this.bdate = bdate;
-        this.bplace = bplace;
-        this.doctype = doctype;
-        this.docno = docno;
-        this.docdt = docdt;
     }
 
     public String getC() {
@@ -108,11 +94,11 @@ public class InformationAboutIndividualDto {
         this.otch = otch;
     }
 
-    public LocalDate getBdate() {
+    public String getBdate() {
         return bdate;
     }
 
-    public void setBdate(LocalDate bdate) {
+    public void setBdate(String bdate) {
         this.bdate = bdate;
     }
 
@@ -140,11 +126,11 @@ public class InformationAboutIndividualDto {
         this.docno = docno;
     }
 
-    public LocalDate getDocdt() {
+    public String getDocdt() {
         return docdt;
     }
 
-    public void setDocdt(LocalDate docdt) {
+    public void setDocdt(String docdt) {
         this.docdt = docdt;
     }
 
@@ -152,23 +138,36 @@ public class InformationAboutIndividualDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof InformationAboutIndividualDto)) return false;
+
         InformationAboutIndividualDto that = (InformationAboutIndividualDto) o;
-        return getDoctype() == that.getDoctype() &&
-                Objects.equals(getC(), that.getC()) &&
-                Objects.equals(getCaptcha(), that.getCaptcha()) &&
-                Objects.equals(getCaptchaToken(), that.getCaptchaToken()) &&
-                Objects.equals(getFam(), that.getFam()) &&
-                Objects.equals(getNam(), that.getNam()) &&
-                Objects.equals(getOtch(), that.getOtch()) &&
-                Objects.equals(getBdate(), that.getBdate()) &&
-                Objects.equals(getBplace(), that.getBplace()) &&
-                Objects.equals(getDocno(), that.getDocno()) &&
-                Objects.equals(getDocdt(), that.getDocdt());
+
+        if (getDoctype() != that.getDoctype()) return false;
+        if (!getC().equals(that.getC())) return false;
+        if (!getCaptcha().equals(that.getCaptcha())) return false;
+        if (!getCaptchaToken().equals(that.getCaptchaToken())) return false;
+        if (!getFam().equals(that.getFam())) return false;
+        if (!getNam().equals(that.getNam())) return false;
+        if (!getOtch().equals(that.getOtch())) return false;
+        if (!getBdate().equals(that.getBdate())) return false;
+        if (!getBplace().equals(that.getBplace())) return false;
+        if (!getDocno().equals(that.getDocno())) return false;
+        return getDocdt().equals(that.getDocdt());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getC(), getCaptcha(), getCaptchaToken(), getFam(), getNam(), getOtch(), getBdate(), getBplace(), getDoctype(), getDocno(), getDocdt());
+        int result = getC().hashCode();
+        result = 31 * result + getCaptcha().hashCode();
+        result = 31 * result + getCaptchaToken().hashCode();
+        result = 31 * result + getFam().hashCode();
+        result = 31 * result + getNam().hashCode();
+        result = 31 * result + getOtch().hashCode();
+        result = 31 * result + getBdate().hashCode();
+        result = 31 * result + getBplace().hashCode();
+        result = 31 * result + getDoctype();
+        result = 31 * result + getDocno().hashCode();
+        result = 31 * result + getDocdt().hashCode();
+        return result;
     }
 
     @Override
@@ -180,11 +179,11 @@ public class InformationAboutIndividualDto {
                 ", fam='" + fam + '\'' +
                 ", nam='" + nam + '\'' +
                 ", otch='" + otch + '\'' +
-                ", bdate=" + bdate +
+                ", bdate='" + bdate + '\'' +
                 ", bplace='" + bplace + '\'' +
                 ", doctype=" + doctype +
                 ", docno='" + docno + '\'' +
-                ", docdt=" + docdt +
+                ", docdt='" + docdt + '\'' +
                 '}';
     }
 }

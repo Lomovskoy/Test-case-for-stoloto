@@ -11,7 +11,7 @@ import javax.servlet.ServletRegistration;
 public class AppInitializer implements WebApplicationInitializer {
 
     @Override
-    public void onStartup(ServletContext servletContext) {
+    public void onStartup(ServletContext servletContext) throws ServletException {
 
         System.out.println("Initializing Application for " + servletContext.getServerInfo());
 
