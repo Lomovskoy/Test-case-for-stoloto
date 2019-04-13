@@ -35,7 +35,7 @@ public class InformationAboutIndividualDto {
     private String bplace;
 
     @ApiModelProperty("Тип документа")
-    private int doctype;
+    private String doctype;
 
     @ApiModelProperty("Серия и номер документа")
     private String docno;
@@ -44,6 +44,21 @@ public class InformationAboutIndividualDto {
     private String docdt;
 
     public InformationAboutIndividualDto() {
+    }
+
+    public InformationAboutIndividualDto(String c, String captcha, String captchaToken, String fam, String nam, String otch,
+                                         String bdate, String bplace, String doctype, String docno, String docdt) {
+        this.c = c;
+        this.captcha = captcha;
+        this.captchaToken = captchaToken;
+        this.fam = fam;
+        this.nam = nam;
+        this.otch = otch;
+        this.bdate = bdate;
+        this.bplace = bplace;
+        this.doctype = doctype;
+        this.docno = docno;
+        this.docdt = docdt;
     }
 
     public String getC() {
@@ -110,11 +125,11 @@ public class InformationAboutIndividualDto {
         this.bplace = bplace;
     }
 
-    public int getDoctype() {
+    public String getDoctype() {
         return doctype;
     }
 
-    public void setDoctype(int doctype) {
+    public void setDoctype(String doctype) {
         this.doctype = doctype;
     }
 
@@ -141,32 +156,33 @@ public class InformationAboutIndividualDto {
 
         InformationAboutIndividualDto that = (InformationAboutIndividualDto) o;
 
-        if (getDoctype() != that.getDoctype()) return false;
-        if (!getC().equals(that.getC())) return false;
-        if (!getCaptcha().equals(that.getCaptcha())) return false;
-        if (!getCaptchaToken().equals(that.getCaptchaToken())) return false;
-        if (!getFam().equals(that.getFam())) return false;
-        if (!getNam().equals(that.getNam())) return false;
-        if (!getOtch().equals(that.getOtch())) return false;
-        if (!getBdate().equals(that.getBdate())) return false;
-        if (!getBplace().equals(that.getBplace())) return false;
-        if (!getDocno().equals(that.getDocno())) return false;
-        return getDocdt().equals(that.getDocdt());
+        if (getC() != null ? !getC().equals(that.getC()) : that.getC() != null) return false;
+        if (getCaptcha() != null ? !getCaptcha().equals(that.getCaptcha()) : that.getCaptcha() != null) return false;
+        if (getCaptchaToken() != null ? !getCaptchaToken().equals(that.getCaptchaToken()) : that.getCaptchaToken() != null)
+            return false;
+        if (getFam() != null ? !getFam().equals(that.getFam()) : that.getFam() != null) return false;
+        if (getNam() != null ? !getNam().equals(that.getNam()) : that.getNam() != null) return false;
+        if (getOtch() != null ? !getOtch().equals(that.getOtch()) : that.getOtch() != null) return false;
+        if (getBdate() != null ? !getBdate().equals(that.getBdate()) : that.getBdate() != null) return false;
+        if (getBplace() != null ? !getBplace().equals(that.getBplace()) : that.getBplace() != null) return false;
+        if (getDoctype() != null ? !getDoctype().equals(that.getDoctype()) : that.getDoctype() != null) return false;
+        if (getDocno() != null ? !getDocno().equals(that.getDocno()) : that.getDocno() != null) return false;
+        return getDocdt() != null ? getDocdt().equals(that.getDocdt()) : that.getDocdt() == null;
     }
 
     @Override
     public int hashCode() {
-        int result = getC().hashCode();
-        result = 31 * result + getCaptcha().hashCode();
-        result = 31 * result + getCaptchaToken().hashCode();
-        result = 31 * result + getFam().hashCode();
-        result = 31 * result + getNam().hashCode();
-        result = 31 * result + getOtch().hashCode();
-        result = 31 * result + getBdate().hashCode();
-        result = 31 * result + getBplace().hashCode();
-        result = 31 * result + getDoctype();
-        result = 31 * result + getDocno().hashCode();
-        result = 31 * result + getDocdt().hashCode();
+        int result = getC() != null ? getC().hashCode() : 0;
+        result = 31 * result + (getCaptcha() != null ? getCaptcha().hashCode() : 0);
+        result = 31 * result + (getCaptchaToken() != null ? getCaptchaToken().hashCode() : 0);
+        result = 31 * result + (getFam() != null ? getFam().hashCode() : 0);
+        result = 31 * result + (getNam() != null ? getNam().hashCode() : 0);
+        result = 31 * result + (getOtch() != null ? getOtch().hashCode() : 0);
+        result = 31 * result + (getBdate() != null ? getBdate().hashCode() : 0);
+        result = 31 * result + (getBplace() != null ? getBplace().hashCode() : 0);
+        result = 31 * result + (getDoctype() != null ? getDoctype().hashCode() : 0);
+        result = 31 * result + (getDocno() != null ? getDocno().hashCode() : 0);
+        result = 31 * result + (getDocdt() != null ? getDocdt().hashCode() : 0);
         return result;
     }
 
@@ -181,7 +197,7 @@ public class InformationAboutIndividualDto {
                 ", otch='" + otch + '\'' +
                 ", bdate='" + bdate + '\'' +
                 ", bplace='" + bplace + '\'' +
-                ", doctype=" + doctype +
+                ", doctype='" + doctype + '\'' +
                 ", docno='" + docno + '\'' +
                 ", docdt='" + docdt + '\'' +
                 '}';

@@ -15,7 +15,7 @@ public class FeignClientConfig {
 
     @Bean
     public NalogRepository getNalogRepository() {
-        System.out.println("CREATE FEIGN");
+
         return Feign.builder()
                 .client(new OkHttpClient())
                 .encoder(new GsonEncoder())
