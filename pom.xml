@@ -72,6 +72,20 @@
       <artifactId>feign-slf4j</artifactId>
       <version>10.2.0</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/io.github.openfeign.form/feign-form -->
+    <dependency>
+      <groupId>io.github.openfeign.form</groupId>
+      <artifactId>feign-form</artifactId>
+      <version>3.7.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.4</version>
+      <scope>provided</scope>
+    </dependency>
+
 
     <dependency>
       <groupId>javax.servlet</groupId>

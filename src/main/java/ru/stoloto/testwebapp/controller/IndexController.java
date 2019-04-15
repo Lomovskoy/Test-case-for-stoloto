@@ -9,17 +9,18 @@ import ru.stoloto.testwebapp.model.AnswerFoNalogRu;
 import ru.stoloto.testwebapp.model.InformationAboutIndividualDto;
 import ru.stoloto.testwebapp.service.NalogService;
 
+import java.io.IOException;
+
 @RestController
-@RequestMapping(path = "/", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class IndexController {
 
     @Autowired
     private NalogService nalogService;
 
-    @PostMapping("/getInn")
-    public ResponseEntity getInnForIndividual(@ApiParam("Модель данных пользователя для получения ИНН")
-                                               @RequestBody InformationAboutIndividualDto informationDto){
-        ResponseEntity responseEntity = nalogService.getInnForIndividual(informationDto);
-        return responseEntity;
+    @PostMapping(path = "/home",  produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public AnswerFoNalogRu getInnForIndividual(@ApiParam("Модель данных пользователя для получения ИНН")
+                                               @RequestBody InformationAboutIndividualDto informationDto) throws IOException {
+        AnswerFoNalogRu answer  = nalogService.getInnForIndividual(informationDto);
+        return answer;
     }
 }
