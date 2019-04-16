@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import ru.stoloto.testwebapp.model.AnswerFoNalogRu;
 import ru.stoloto.testwebapp.model.InformationAboutIndividualDto;
 import ru.stoloto.testwebapp.resitory.NalogRepository;
-import java.io.IOException;
 
 @Service
 public class NalogService {
@@ -17,7 +16,8 @@ public class NalogService {
         this.nalogRepository = nalogRepository;
     }
 
-    public AnswerFoNalogRu getInnForIndividual(InformationAboutIndividualDto informationDto) throws IOException {
+    public AnswerFoNalogRu getInnForIndividual(InformationAboutIndividualDto informationDto) {
+
         return nalogRepository.getInnForIndividual(informationDto);
     }
 }
