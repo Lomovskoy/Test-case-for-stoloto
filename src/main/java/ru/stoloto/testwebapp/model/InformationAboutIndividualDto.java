@@ -15,7 +15,7 @@ import java.util.Objects;
 public class InformationAboutIndividualDto {
 
     @ApiModelProperty("Служебноеполе с типом запроса")
-    private String c;
+    private String c = "innMy";
 
     @ApiModelProperty("Капча")
     private String captcha;
@@ -39,7 +39,7 @@ public class InformationAboutIndividualDto {
     private String bplace;
 
     @ApiModelProperty("Тип документа")
-    private int doctype;
+    private int doctype = 21;
 
     @ApiModelProperty("Серия и номер документа")
     private String docno;
