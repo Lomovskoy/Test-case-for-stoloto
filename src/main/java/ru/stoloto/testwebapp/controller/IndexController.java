@@ -5,10 +5,10 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.stoloto.testwebapp.model.AnswerFoNalogRu;
 import ru.stoloto.testwebapp.model.InformationAboutIndividualDto;
 import ru.stoloto.testwebapp.service.NalogService;
 
@@ -23,9 +23,9 @@ public class IndexController {
     @ApiOperation("Метод получения ИНН по пользовательяским данным")
     @ResponseBody
     @RequestMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE )
-    public AnswerFoNalogRu getInnForIndividual(@ApiParam("Модель данных пользователя для получения ИНН")
-                                               @Validated InformationAboutIndividualDto informationDto) {
-        AnswerFoNalogRu answer  = nalogService.getInnForIndividual(informationDto);
+    public ResponseEntity getInnForIndividual(@ApiParam("Модель данных пользователя для получения ИНН")
+                                              @Validated InformationAboutIndividualDto informationDto) {
+        ResponseEntity answer  = nalogService.getInnForIndividual(informationDto);
         return answer;
     }
 

@@ -21,21 +21,20 @@
 <body>
 <div class="container ">
     <br>
-    <h4 class="text-center text-dark">Сведения о физическом лице</h4>
+        <h4 class="text-center text-dark">Сведения о физическом лице</h4>
     <hr>
     <p class="text-center">${info}</p>
-    <form class="col-4 mt-4 p-4 border border-secondary rounded container" action="/inn" method="POST">
-
+    <form class="col-4 mt-4 p-4 border border-secondary rounded container" action="/inn" method="POST" enctype="application/x-www-form-urlencoded">
         <div class="form-group">
-            <label for="fam">Фамилия:*</label>
+            <label for="fam">Фамилия: *</label>
             <input type="text" class="form-control" id="fam" name="fam" required>
         </div>
         <div class="form-group">
-            <label for="nam">Имя:*</label>
+            <label for="nam">Имя: *</label>
             <input type="text" class="form-control" id="nam" name="nam" required>
         </div>
         <div class="form-group">
-            <label for="otch">Отчество:*</label>
+            <label for="otch">Отчество: *</label>
             <input type="text" class="form-control" id="otch" name="otch" required>
         </div>
         <div class="form-group">
@@ -43,27 +42,17 @@
             <input type="date" class="form-control" id="bdate" name="bdate" required>
         </div>
         <div class="form-group">
-            <label for="bplace">Место рождения: *</label>
-            <input type="text" class="form-control" id="bplace" name="bplace" required>
+            <label for="bplace">Место рождения:</label>
+            <input type="text" class="form-control" id="bplace" name="bplace">
         </div>
-        <div class="form-group" hidden>
-            <label for="doctype">Вид документа: *</label>
-            <input type="number" class="form-control" id="doctype" name="doctype" value="21" readonly>
-        </div>
-        <div class="form-group" hidden>
-            <label for="c">Вид документа: *</label>
-            <input type="text" class="form-control" id="c" name="c" value="innMy" readonly>
-        </div>
-
         <div class="form-group">
-            <label for="docno">Серия и номер паспорта:*</label>
+            <label for="docno">Серия и номер паспорта: *</label>
             <input type="text" class="form-control" id="docno" name="docno" required>
         </div>
         <div class="form-group">
-            <label for="docdt">Дата выдачи паспорта:*</label>
-            <input type="date" class="form-control" id="docdt" name="docdt" required>
+            <label for="docdt">Дата выдачи паспорта:</label>
+            <input type="date" class="form-control" id="docdt" name="docdt">
         </div>
-
         <div class="row m-0 mt-2">
             <input type="submit" class="btn btn-primary ml-auto" value="Отправить запрос"></input>
         </div>
