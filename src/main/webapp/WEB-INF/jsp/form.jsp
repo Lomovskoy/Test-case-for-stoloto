@@ -21,10 +21,10 @@
 <body>
 <div class="container ">
     <br>
-        <h4 class="text-center text-dark">Сведения о физическом лице</h4>
+    <h4 class="text-center text-dark">Сведения о физическом лице</h4>
     <hr>
-    <p class="text-center">${info}</p>
     <form class="col-4 mt-4 p-4 border border-secondary rounded container" action="/inn" method="POST" enctype="application/x-www-form-urlencoded">
+
         <div class="form-group">
             <label for="fam">Фамилия: *</label>
             <input type="text" class="form-control" id="fam" name="fam" required>
@@ -53,6 +53,7 @@
             <label for="docdt">Дата выдачи паспорта:</label>
             <input type="date" class="form-control" id="docdt" name="docdt">
         </div>
+
         <div class="row m-0 mt-2">
             <input type="submit" class="btn btn-primary ml-auto" value="Отправить запрос"></input>
         </div>

@@ -12,5 +12,5 @@ public interface NalogRepository {
 
     @RequestLine("POST /inn-proc.do")
     @Headers("Content-Type: application/x-www-form-urlencoded")
-    ResponseEntity getInnForIndividual(InformationAboutIndividualDto informationDto);
+    AnswerFoNalogRu getInnForIndividual(InformationAboutIndividualDto informationDto);
 }

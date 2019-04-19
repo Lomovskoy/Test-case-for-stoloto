@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ru.stoloto.testwebapp.model.AnswerFoNalogRu;
 import ru.stoloto.testwebapp.model.InformationAboutIndividualDto;
 import ru.stoloto.testwebapp.service.NalogService;
 
@@ -22,10 +23,10 @@ public class IndexController {
     @PostMapping(value = "/inn", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ApiOperation("Метод получения ИНН по пользовательяским данным")
     @ResponseBody
-    @RequestMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE )
-    public ResponseEntity getInnForIndividual(@ApiParam("Модель данных пользователя для получения ИНН")
-                                              @Validated InformationAboutIndividualDto informationDto) {
-        ResponseEntity answer  = nalogService.getInnForIndividual(informationDto);
+    @RequestMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public AnswerFoNalogRu getInnForIndividual(@ApiParam("Модель данных пользователя для получения ИНН")
+                                               @Validated InformationAboutIndividualDto informationDto) {
+        AnswerFoNalogRu answer  = nalogService.getInnForIndividual(informationDto);
         return answer;
     }
 
