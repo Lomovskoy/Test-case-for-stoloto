@@ -20,19 +20,22 @@ public class IndexController {
     @Autowired
     private NalogService nalogService;
 
-    @PostMapping(value = "/inn", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation("Метод получения ИНН по пользовательяским данным")
-    @ResponseBody
-    @RequestMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public AnswerFoNalogRu getInnForIndividual(@ApiParam("Модель данных пользователя для получения ИНН")
+    //@PostMapping(value = "/inn", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    //@ResponseBody
+    //@RequestMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    @PostMapping
+    public String getInnForIndividual(@ApiParam("Модель данных пользователя для получения ИНН")
                                                @Validated InformationAboutIndividualDto informationDto) {
-        AnswerFoNalogRu answer  = nalogService.getInnForIndividual(informationDto);
-        return answer;
+        //AnswerFoNalogRu answer  = nalogService.getInnForIndividual(informationDto);
+        return "info";
     }
 
-    @GetMapping
-    @ApiOperation("Метод получения формы ввода данных")
+    @GetMapping("/")
     public String viewForm(){
         return "form";
     }
+
+
+
+
 }

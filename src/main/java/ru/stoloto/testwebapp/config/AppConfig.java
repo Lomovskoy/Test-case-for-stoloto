@@ -16,8 +16,6 @@ public class AppConfig implements WebMvcConfigurer {
 
         registry.addResourceHandler("*.jsp/")
                 .addResourceLocations("classpath:/META-INF/jsp/");
-
-
     }
 
 }
