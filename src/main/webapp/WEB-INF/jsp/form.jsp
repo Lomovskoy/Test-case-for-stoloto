@@ -5,7 +5,7 @@
   Time: 12:42
   To change this template use File | Settings | File Templates.
 --%>
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8"%>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +16,16 @@
     <title>Узнать свой ИНН</title>
     <link rel="shortcut icon" href="/webapp/WEB-INF/template/icon/java.png" type="image/png">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <div class="container ">
     <br>
     <h4 class="text-center text-dark">Сведения о физическом лице</h4>
     <hr>
-    <form class="col-4 mt-4 p-4 border border-secondary rounded container" action="/inn" method="POST" enctype="application/x-www-form-urlencoded">
+    <form id='individual-form' class="col-4 mt-4 p-4 border border-secondary rounded container" action="/inn"
+          method="POST" enctype="application/x-www-form-urlencoded">
 
         <div class="form-group">
             <label for="fam">Фамилия: *</label>
@@ -65,5 +67,56 @@
     <p class="text-center">© Lomovskoy 2019</p>
 </footer><!--/Footer-->
 
+<script type="application/ecmascript">
+    const $individualForm = document.getElementById('individual-form')
+
+    $individualForm.addEventListener('submit', event => {
+        event.preventDefault()
+
+        const formValues = [].reduce.call(
+            document.querySelectorAll('#individual-form input'),
+            (result, it) => {
+                if (it.name === 'submit') return result
+
+                const encodedKey = encodeURIComponent(it.name)
+                const encodedValue = encodeURIComponent(it.value)
+                const encodedKeyValue = encodedKey + '=' + encodedValue
+                return result ? result + '&' + encodedKeyValue : encodedKeyValue
+            },
+            '')
+
+        fetch('/inn', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+            },
+            body: formValues
+        })
+            .then(data => data.json())
+            .then(({inn}) => {
+                let result = document.getElementById('result')
+
+                const successComponent = document.createElement('div')
+                successComponent.innerHTML = "Ваш ИНН" + inn
+
+                const noInnComponent = document.createElement('div')
+                noInnComponent.innerHTML = "Не найден"
+
+                const newResult = inn ? successComponent : noInnComponent
+
+                if(result) {
+                    result.innerHTML = newResult.innerHTML
+                } else {
+                    const buf = document.createElement('div')
+                    buf.setAttribute('id', 'result')
+                    buf.innerHTML = newResult.innerHTML
+
+                    result = buf
+                }
+
+                $individualForm.appendChild(result)
+            })
+    })
+</script>
 </body>
 </html>
