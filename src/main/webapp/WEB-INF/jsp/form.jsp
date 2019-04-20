@@ -1,6 +1,6 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Lomovskoy
+  User: lomovskoy_ky
   Date: 15.04.2019
   Time: 12:42
   To change this template use File | Settings | File Templates.
@@ -48,7 +48,8 @@
         </div>
         <div class="form-group">
             <label for="docno">Серия и номер паспорта: *</label>
-            <input type="text" class="form-control" id="docno" name="docno" required>
+            <input type="text" class="form-control" id="docno" name="docno" pattern="[0-9]{2} [0-9]{2} [0-9]{6}"
+                   placeholder="__ __ ______" required>
         </div>
         <div class="form-group">
             <label for="docdt">Дата выдачи паспорта:</label>

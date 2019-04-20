@@ -1,32 +1,30 @@
 package ru.stoloto.testwebapp.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.stoloto.testwebapp.model.AnswerFoNalogRu;
 import ru.stoloto.testwebapp.model.InformationAboutIndividualDto;
 import ru.stoloto.testwebapp.service.NalogService;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @Controller
-@Api(tags = "Главный контроллер приложения")
-public class IndexController {
+public class IndexController extends HttpServlet {
 
     @Autowired
     private NalogService nalogService;
 
-    //@PostMapping(value = "/inn", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    //@ResponseBody
-    //@RequestMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    @PostMapping
-    public String getInnForIndividual(@ApiParam("Модель данных пользователя для получения ИНН")
-                                               @Validated InformationAboutIndividualDto informationDto) {
-        //AnswerFoNalogRu answer  = nalogService.getInnForIndividual(informationDto);
+    @PostMapping(value = "/inn")
+    public String getInnForIndividual(@Validated InformationAboutIndividualDto informationDto, HttpServletRequest request){
+
+        AnswerFoNalogRu answer = nalogService.getInnForIndividual(informationDto);
+        request.getSession(false).setAttribute("inn", answer.getInn());
         return "info";
     }
 

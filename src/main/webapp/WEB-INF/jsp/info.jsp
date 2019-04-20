@@ -20,11 +20,13 @@
 </head>
 <body>
 <div class="container ">
-
-    <!-- Здесь будет какой нибудь контент если мне будет не лень. -->
+    <br>
     <h4 class="text-center text-dark">Ваш ИНН: </h4>
+    <hr>
+    <a type="button" class="m-1 p-2 btn btn-dark px-md-5" href="/"><- Назад</a>
+    <br>
+    <h4 class="m-1 p-2 border bg-light">Ваш ИНН: ${inn}</h4>
 
-    <a type="button" class="btn btn-dark" href="/"><- Назад</a>
 </div>
 <footer class="container"><!--Footer-->
     <hr>

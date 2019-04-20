@@ -23,7 +23,6 @@ public interface NalogRepository {
     @Headers("Content-Type: test/plan")
     String getTokenCaptcha();
 
-
     @RequestLine("GET /static/captcha.bin")
     @Headers("Content-Type: test/plan")
     ByteArrayInputStream getCaptcha();

@@ -1,7 +1,7 @@
 package ru.stoloto.testwebapp.model;
 
-import lombok.*;
-
+import lombok.Data;
+import lombok.NoArgsConstructor;
 /**
  * Модель данных получаемая от сервера service.nalog.ru
  * @author lomovskoy_ky
@@ -19,4 +19,10 @@ public class AnswerFoNalogRu {
 
     /** Код ответа 1 есть ИНН 0 нет ИНН */
     private int code;
+
+    public AnswerFoNalogRu(String inn, Boolean captchaRequired, int code) {
+        this.inn = inn;
+        this.captchaRequired = captchaRequired;
+        this.code = code;
+    }
 }
