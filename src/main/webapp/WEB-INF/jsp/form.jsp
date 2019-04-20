@@ -25,7 +25,6 @@
     <hr>
     <form id='individual-form' class="col-4 mt-4 p-4 border border-secondary rounded container" action="/inn"
           method="POST" enctype="application/x-www-form-urlencoded">
-
         <div class="form-group">
             <label for="fam">Фамилия: *</label>
             <input type="text" class="form-control" id="fam" name="fam" required>
@@ -43,25 +42,24 @@
             <input type="date" class="form-control" id="bdate" name="bdate" required>
         </div>
         <div class="form-group">
-            <label for="bplace">Место рождения:</label>
-            <input type="text" class="form-control" id="bplace" name="bplace">
-        </div>
-        <div class="form-group">
             <label for="docno">Серия и номер паспорта: *</label>
             <input type="text" class="form-control" id="docno" name="docno" pattern="[0-9]{2} [0-9]{2} [0-9]{6}"
                    placeholder="__ __ ______" required>
         </div>
         <div class="form-group">
-            <label for="docdt">Дата выдачи паспорта:</label>
-            <input type="date" class="form-control" id="docdt" name="docdt">
+            <label for="docno">Капча:</label>
+            <input type="text" class="form-control" id="captcha" name="captcha">
         </div>
+        <img src="/capcha?token=${token}" class="rounded mx-auto d-block" alt="Капча">
 
+        <div class="form-group">
+            <input type="hidden" class="form-control" id="captchaToken" name="captchaToken" value="${token}">
+        </div>
         <div class="row m-0 mt-2">
             <input type="submit" class="btn btn-primary ml-auto" value="Отправить запрос"/>
         </div>
     </form>
 </div>
-
 <footer class="container"><!--Footer-->
     <hr>
     <p class="text-center">© Lomovskoy 2019</p>

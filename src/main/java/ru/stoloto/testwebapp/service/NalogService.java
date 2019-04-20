@@ -1,10 +1,14 @@
 package ru.stoloto.testwebapp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.stoloto.testwebapp.model.AnswerFoNalogRu;
 import ru.stoloto.testwebapp.model.InformationAboutIndividualDto;
 import ru.stoloto.testwebapp.resitory.NalogRepository;
+
+import java.io.ByteArrayInputStream;
+import java.util.LinkedHashMap;
 
 /**
  * Сервис для работы с данными от сервера service.nalog.ru
@@ -17,6 +21,10 @@ public class NalogService {
 
     private NalogRepository nalogRepository;
 
+    private int time = 500000;
+
+    private int version = 3;
+
     @Autowired
     public void setNalogRepository(NalogRepository nalogRepository) {
         this.nalogRepository = nalogRepository;
@@ -24,7 +32,6 @@ public class NalogService {
 
     public AnswerFoNalogRu getInnForIndividual(InformationAboutIndividualDto informationDto) {
         try {
-            String token = nalogRepository.getTokenCaptcha();
             AnswerFoNalogRu answer = nalogRepository.getInnForIndividual(convertDateFormat(informationDto));
             if(answer.getInn() == null) answer.setInn("Не найден");
             return answer;
@@ -32,6 +39,16 @@ public class NalogService {
             return new AnswerFoNalogRu("Внутренняя ошибка сервера", true, 1);
         }
 
+    }
+
+    public String getToken() {
+        return nalogRepository.getTokenCaptcha();
+    }
+
+    public byte[] getCaptcha(String token) {
+        LinkedHashMap resp = nalogRepository.getCaptcha(time, token, version);
+        String body = resp.toString();
+        return new byte[]{(byte)0xe0};
     }
 
     private InformationAboutIndividualDto convertDateFormat(InformationAboutIndividualDto informationDto) {
