@@ -4,6 +4,7 @@
   Date: 15.04.2019
   Time: 12:42
 --%>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
 <%@include file = "layouts/header.jsp" %>
 
 <div class="container ">
