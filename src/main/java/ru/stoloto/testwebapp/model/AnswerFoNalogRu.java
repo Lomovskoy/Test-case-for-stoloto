@@ -2,6 +2,7 @@ package ru.stoloto.testwebapp.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 /**
  * Модель данных получаемая от сервера service.nalog.ru
  * @author lomovskoy_ky
