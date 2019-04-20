@@ -1,5 +1,6 @@
 package ru.stoloto.testwebapp.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
  */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class AnswerFoNalogRu {
 
     /** ИНН физического лица */
@@ -21,9 +23,4 @@ public class AnswerFoNalogRu {
     /** Код ответа 1 есть ИНН 0 нет ИНН */
     private int code;
 
-    public AnswerFoNalogRu(String inn, Boolean captchaRequired, int code) {
-        this.inn = inn;
-        this.captchaRequired = captchaRequired;
-        this.code = code;
-    }
 }

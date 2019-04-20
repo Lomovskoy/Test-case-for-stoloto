@@ -1,24 +1,11 @@
 <%--
-  Created by IntelliJ IDEA.
+  Стартовая страница приложения, содержит форму ввода данных.
   User: lomovskoy_ky
   Date: 15.04.2019
   Time: 12:42
-  To change this template use File | Settings | File Templates.
 --%>
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-<!DOCTYPE html>
-<html>
-<head>
-    <!-- Необходимые Мета-теги всегда на первом месте -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Узнать свой ИНН</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
+<%@include file = "layouts/header.jsp" %>
+
 <div class="container ">
     <br>
     <h4 class="text-center text-dark">Сведения о физическом лице</h4>
@@ -60,10 +47,5 @@
             <input type="submit" class="btn btn-primary ml-auto" value="Отправить запрос"/>
         </div>
     </form>
-</div>
-<footer class="container"><!--Footer-->
-    <hr>
-    <p class="text-center">© Lomovskoy 2019</p>
-</footer><!--/Footer-->
-</body>
-</html>
+
+<%@include file = "layouts/footer.jsp" %>

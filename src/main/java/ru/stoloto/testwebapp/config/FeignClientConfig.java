@@ -10,12 +10,20 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.stoloto.testwebapp.resitory.NalogRepository;
 
+/**
+ * Класс конфигурации Feign Client - декларативный HTTP клиент
+ * @author lomovskoy_ky
+ * @version 1.0.0
+ */
 @Configuration
 public class FeignClientConfig {
 
+    /**
+     * Возвращает сконфигурированный Feign Client, обращающийся к сайту service.nalog.ru
+     * @return Feign
+     */
     @Bean
     public NalogRepository getNalogRepository() {
-
         return Feign.builder()
                 .client(new OkHttpClient())
                 .encoder(new FormEncoder())

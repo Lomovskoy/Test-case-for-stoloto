@@ -7,15 +7,25 @@ import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.DispatcherServlet;
-
 import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRegistration;
 
+/**
+ * Класс конфигурирующий прилоджение при его инициализации, реализующий
+ * WebApplicationInitializer это интерфейс, предоставляемый Spring MVC,
+ * который гарантирует инициализацию при старте контейнера.
+ * @author lomovskoy_ky
+ * @version 1.0.0
+ */
 public class AppInitializer implements WebApplicationInitializer {
 
     private Logger logger = LoggerFactory.getLogger(AppInitializer.class.getName());
 
+    /**
+     * Метод конфигурации контекста приложенияпри его инициализации.
+     * @param servletContext - контекст сервлета, содержит информацию о контексте сервера
+     */
     @Override
     public void onStartup(@NonNull ServletContext servletContext) {
 

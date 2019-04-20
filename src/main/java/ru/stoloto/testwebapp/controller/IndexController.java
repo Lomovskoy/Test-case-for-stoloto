@@ -9,18 +9,34 @@ import ru.stoloto.testwebapp.service.NalogService;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Главный контроллер прилдожения
+ * @author lomovskoy_ky
+ * @version 1.0.0
+ */
 @Controller
 public class IndexController extends HttpServlet {
 
     @Autowired
     private NalogService nalogService;
 
+    /**
+     * Метод полечения ИНН по информации из формы на фронте
+     * @param informationDto    - модель данных пользователя для получения ИНН
+     * @param request           - обьект дающий возможность сервлету обрабатывать клиентский запрос.
+     * @return                  - возвращает страницу из контекста приложения /WEB-INF/jsp/info.jsp
+     */
     @PostMapping(value = "/inn")
     public String getInnForIndividual(@Validated InformationAboutIndividualDto informationDto, HttpServletRequest request){
         request.setAttribute("inn", nalogService.getInnForIndividual(informationDto).getInn());
         return "info";
     }
 
+    /**
+     * Метод возвращающий главную страницу прилодения для воода данных.
+     * @param request   - обьект дающий возможность сервлету обрабатывать клиентский запрос.
+     * @return          - возвращает страницу из контекста приложения /WEB-INF/jsp/form.jsp
+     */
     @GetMapping("/")
     public String viewForm(HttpServletRequest request){
         request.setAttribute("token", nalogService.getToken());
