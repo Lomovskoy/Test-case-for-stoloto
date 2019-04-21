@@ -5,7 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.stoloto.testwebapp.model.InformationAboutIndividualDto;
-import ru.stoloto.testwebapp.service.NalogService;
+import ru.stoloto.testwebapp.service.impl.NalogServiceImpl;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 public class IndexController extends HttpServlet {
 
     @Autowired
-    private NalogService nalogService;
+    private NalogServiceImpl nalogServiceImpl;
 
     /**
      * Метод полечения ИНН по информации из формы на фронте
@@ -28,7 +29,7 @@ public class IndexController extends HttpServlet {
      */
     @PostMapping(value = "/inn")
     public String getInnForIndividual(@Validated InformationAboutIndividualDto informationDto, HttpServletRequest request){
-        request.setAttribute("inn", nalogService.getInnForIndividual(informationDto).getInn());
+        request.setAttribute("inn", nalogServiceImpl.getInnForIndividual(informationDto).getInn());
         return "info";
     }
 
@@ -39,7 +40,7 @@ public class IndexController extends HttpServlet {
      */
     @GetMapping("/")
     public String viewForm(HttpServletRequest request){
-        request.setAttribute("token", nalogService.getToken());
+        request.setAttribute("token", nalogServiceImpl.getToken());
         return "form";
     }
 
