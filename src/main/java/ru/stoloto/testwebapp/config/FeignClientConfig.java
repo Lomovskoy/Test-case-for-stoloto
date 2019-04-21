@@ -6,6 +6,7 @@ import feign.form.FormEncoder;
 import feign.gson.GsonDecoder;
 import feign.okhttp.OkHttpClient;
 import feign.slf4j.Slf4jLogger;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.stoloto.testwebapp.resitory.NalogRepository;
@@ -17,6 +18,9 @@ import ru.stoloto.testwebapp.resitory.NalogRepository;
  */
 @Configuration
 public class FeignClientConfig {
+
+    @Value("${url.request}")
+    String url;
 
     /**
      * Возвращает сконфигурированный Feign Client, обращающийся к сайту service.nalog.ru
@@ -30,7 +34,7 @@ public class FeignClientConfig {
                 .decoder(new GsonDecoder())
                 .logger(new Slf4jLogger())
                 .logLevel(Logger.Level.FULL)
-                .target(NalogRepository.class, "https://service.nalog.ru");
+                .target(NalogRepository.class, url);
     }
 
 }
