@@ -1,6 +1,7 @@
 package ru.stoloto.testwebapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,12 @@ public class IndexController extends HttpServlet {
 
     @Autowired
     private NalogServiceImpl nalogServiceImpl;
+
+    @Value("${captcha.life.time}")
+    private String captchaLifeTime;
+
+    @Value("${captcha.version}")
+    private String captchaVersion;
 
     /**
      * Метод полечения ИНН по информации из формы на фронте
@@ -41,6 +48,8 @@ public class IndexController extends HttpServlet {
     @GetMapping("/")
     public String viewForm(HttpServletRequest request){
         request.setAttribute("token", nalogServiceImpl.getToken());
+        request.setAttribute("time", captchaLifeTime);
+        request.setAttribute("version", captchaVersion);
         return "form";
     }
 

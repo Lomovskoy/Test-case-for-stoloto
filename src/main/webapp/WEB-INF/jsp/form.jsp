@@ -38,7 +38,7 @@
             <label for="docno">Капча:</label>
             <input type="text" class="form-control" id="captcha" name="captcha">
         </div>
-        <img src="https://service.nalog.ru/static/captcha.bin?r=50000&a=${token}&version=3"
+        <img src="https://service.nalog.ru/static/captcha.bin?r=${time}&a=${token}&version=${version}"
              class="rounded mx-auto d-block" alt="Капча">
 
         <div class="form-group">
